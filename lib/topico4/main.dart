@@ -16,6 +16,7 @@ class _ProgressBarState extends State<ProgressBar> {
   String downloadMensage = "Clique Para iniciar o Upload";
   double _porcentagem = 100;
   var doubleValue = Random().nextDouble() * 20;
+  Color cor = Colors.yellow;
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +31,15 @@ class _ProgressBarState extends State<ProgressBar> {
                 onPressed: () {
                   setState(() {
                     downloadMensage = "${doubleValue.toStringAsFixed(1)}%";
-                    
+
                     if (doubleValue < 100) {
                       doubleValue = doubleValue + doubleValue;
+                      cor = Colors.orange;
                     }
 
                     if (doubleValue >= 100) {
                       downloadMensage = "Upload Completo";
+                      cor = Colors.green;
                     }
                     _porcentagem = doubleValue / 100;
                   });
@@ -49,11 +52,11 @@ class _ProgressBarState extends State<ProgressBar> {
               ),
               Text(downloadMensage),
               Padding(
-                padding: const EdgeInsets.all(32.0),
+                padding: const EdgeInsets.all(20.0),
                 child: LinearProgressIndicator(
                   minHeight: 10.0,
+                  valueColor: AlwaysStoppedAnimation(cor),
                   backgroundColor: Colors.yellow,
-                  
                   value: _porcentagem,
                 ),
               )
