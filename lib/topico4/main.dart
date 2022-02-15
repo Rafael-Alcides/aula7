@@ -14,8 +14,8 @@ class ProgressBar extends StatefulWidget {
 
 class _ProgressBarState extends State<ProgressBar> {
   String downloadMensage = "Clique Para iniciar o Upload";
-  double _porcentagem = 100;
-  var doubleValue = Random().nextDouble() * 20;
+  double _porcentagem = 0;
+  var doubleValue = Random().nextDouble() ;
   Color cor = Colors.yellow;
 
   @override
